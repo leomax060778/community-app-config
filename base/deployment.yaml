@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: latam-mifosapp
-          image: leonardohildt/lhildt-testing:2022-12-28--20-13
+          image: leonardohildt/lhildt-testing:2022-12-28--50-18
           ports:
             - name: http
               containerPort: 8080
