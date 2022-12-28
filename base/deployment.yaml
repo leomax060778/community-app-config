@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: latam-mifosapp-deployment
+spec:
+  selector:
+    matchLabels:
+      app: latam-mifosapp-deployment
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: latam-mifosapp
+    spec:
+      containers:
+        - name: latam-mifosapp
+          image: leonardohildt/lhildt-testing:2022-12-28--20-13
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
