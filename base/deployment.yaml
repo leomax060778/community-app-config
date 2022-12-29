@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: latam-mifosapp-deployment
+  name: latam-mifosapp
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: latam-mifosapp-deployment
-  replicas: 2
+      app: latam-mifosapp
   template:
     metadata:
       labels:
-        app: latam-mifosapp
+        deployment: latam-mifosapp
     spec:
       containers:
         - name: latam-mifosapp
           image: leonardohildt/lhildt-testing:2022-12-28--50-18
           ports:
-            - name: http
-              containerPort: 8080
-              protocol: TCP
+            - containerPort: 80
+          imagePullPolicy: Always

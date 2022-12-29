@@ -1,3 +1,6 @@
+namePrefix: latam-mifosapp-
+apiVersion: apps/v1
+kind: Kustomization
 commonLabels:
   app: latam-mifosapp
 

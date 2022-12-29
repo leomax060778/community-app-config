@@ -1,10 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: latam-mifosapp-service
+  name: latam-mifosapp
 spec:
   ports:
-    - name: http
-      port: 8080
+    - port: 80
+      targetPort: 80
   selector:
-  app: latam-mifosapp-deployment
+    app: latam-mifosapp
+  type: ClusterIP
