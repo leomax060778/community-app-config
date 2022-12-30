@@ -1,20 +1,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: latam-mifosapp
+  name: latam-mifos-community
+  labels:
+    app: latam-mifos-community
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: latam-mifosapp
+      app: latam-mifos-community
+      tier: frontend
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
-        deployment: latam-mifosapp
+        app: latam-mifos-community
+        tier: frontend
     spec:
+      initContainers:
+        - name: init-myservice
+          image: busybox:1.28
+          command: ['sh', '-c', 'echo -e "Checking for the availability of Fineract server deployment"; while ! nc -z "fineract-server" 8443; do sleep 1; printf "-"; done; echo -e " >> Fineract server has started";']
       containers:
-        - name: latam-mifosapp
-          image: leonardohildt/lhildt-testing:2022-12-28--50-18
+        - name: latam-mifos-community
+          image: leonardohildt/mifos-app:2022-12-29--27-37
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+            requests:
+              cpu: "200m"
+              memory: "0.5Gi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 90
+            periodSeconds: 1
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 90
+            periodSeconds: 1
           ports:
             - containerPort: 80
-          imagePullPolicy: Always
+              name: latam-mifos-community

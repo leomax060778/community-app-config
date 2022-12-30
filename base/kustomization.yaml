@@ -2,7 +2,7 @@ namePrefix: latam-mifosapp-
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
-  app: latam-mifosapp
+  app: latam-mifos-community
 
 resources:
   - deployment.yaml

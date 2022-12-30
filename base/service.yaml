@@ -1,11 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: latam-mifosapp
+  labels:
+    app: latam-mifos-community
+  name: latam-mifos-community
 spec:
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 9090
       targetPort: 80
   selector:
-    app: latam-mifosapp
-  type: ClusterIP
+    app: latam-mifos-community
+    tier: frontend
+  type: LoadBalancer
