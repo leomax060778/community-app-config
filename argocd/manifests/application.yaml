@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: latam-mifos-community
+  name: latam-mifos
   namespace: argocd
 spec:
   project: default
@@ -12,7 +12,7 @@ spec:
     path: base
   destination:
     server: https://kubernetes.default.svc
-    namespace: latam-mifos-community
+    namespace: latam-mifos
 
   syncPolicy:
     syncOptions:
