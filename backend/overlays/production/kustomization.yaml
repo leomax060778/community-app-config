@@ -1,5 +1,5 @@
 namePrefix: -production
 commonLabels:
   variant: production
-bases:
+resources:
   - ../../base

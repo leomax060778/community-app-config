@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/leomax060778/community-app-config.git
     targetRevision: HEAD
-    path: base
+    path: frontend/base
   destination:
     server: https://kubernetes.default.svc
     namespace: latam-mifos

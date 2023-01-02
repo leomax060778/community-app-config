@@ -1,5 +1,5 @@
 namePrefix: -dev
 commonLabels:
   variant: dev
-bases:
+resources:
   - ../../base
